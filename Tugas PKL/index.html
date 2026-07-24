@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulir Survey</title>
+  </head>
+
+  <body>
+    <h1 id="title">Formulir Survey</h1>
+
+    <p id="description">
+      Silahkan isi survey singkat ini mengenai minat perograman Anda.
+    </p>
+
+    <form id="survey-form">
+      <label id="name-label" for="name"> Nama </label>
+      <input id="name" type="text" placeholder="Enter your name" required />
+      <label id="email-label" for="email"> Email </label>
+      <input id="email" type="email" placeholder="Enter your email" required />
+      <label id="number-label" for="number"> Usia </label>
+      <input
+        id="number"
+        type="number"
+        min="13"
+        max="100"
+        placeholder="Enter your age"
+      />
+      <label for="dropdown"> bahasa pemrograman yang paling Anda minati </label>
+      <select id="dropdown">
+        <option value="javascript">JavaScript</option>
+        <option value="python">Python</option>
+        <option value="html-css">HTML & CSS</option>
+      </select>
+      <p>berapa pengalaman Anda dengan pemrograman?</p>
+      <label class="option">
+        <input type="radio" name="experience" value="beginner" />
+        Beginner
+      </label>
+      <label class="option">
+        <input type="radio" name="experience" value="intermediate" />
+        Intermediate
+      </label>
+      <label class="option">
+        <input type="radio" name="experience" value="advanced" />
+        Advanced
+      </label>
+      <p>teknologi apa yang Anda gunakan?</p>
+      <label class="option">
+        <input type="checkbox" value="html" />
+        HTML
+      </label>
+      <label class="option">
+        <input type="checkbox" value="css" />
+        CSS
+      </label>
+      <label class="option">
+        <input type="checkbox" value="javascript" />
+        JavaScript
+      </label>
+      <label class="option">
+        <input type="checkbox" value="python" />
+        Python
+      </label>
+      <label for="comments"> Komentar Tambahan </label>
+      <textarea
+        id="comments"
+        placeholder="Tulis komentar Anda di sini..."
+      ></textarea>
+      <button id="submit" type="submit">Kirim</button>
+    </form>
+  </body>
+</html>
