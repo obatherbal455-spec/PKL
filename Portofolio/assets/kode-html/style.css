@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Silkscreen", sans-serif;
+  background-image: url("/Portofolio/assets/img/dirt.png");
+  background-repeat: repeat;
+  background-attachment: fixed;
+  line-height: 1.8;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+.judul {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.judul-card {
+  background: #8b5a2b;
+  border: 6px solid #4a2c14;
+  padding: 25px;
+  width: 900px;
+  text-align: center;
+  box-shadow: 8px 8px 0 #2d1b0d;
+}
+
+.judul-card h1 {
+  font-size: 2rem;
+  color: #f5f7f3;
+  text-shadow: 2px 2px black;
+}
+
+.penjelasan {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.penjelasan h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: white;
+  text-shadow: 2px 2px black;
+}
+
+.penjelasan-card {
+  background: #8b5a2b;
+  border: 6px solid #4a2c14;
+  padding: 30px;
+  box-shadow: 8px 8px 0 #2d1b0d;
+}
+
+.penjelasan-card ol {
+  padding-left: 30px;
+}
+
+.penjelasan-card li {
+  margin-bottom: 15px;
+  color: white;
+  text-shadow: 2px 2px black;
+}
+
+.penjelasan-card ul {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.penjelasan-card:hover,
+.judul-card:hover {
+  transform: translateY(-5px);
+  transition: 0.3s;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #4a2c14;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6ab04c;
+  border: 2px solid #2d1b0d;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7cfc00;
+}
+
+.btn {
+  display: inline-block;
+  background: grey;
+  color: #fff;
+  text-decoration: none;
+  padding: 16px 30px;
+  border: 3px solid #0f0f0f;
+  box-shadow:
+    inset 2px 2px rgba(255, 255, 255, 0.35),
+    inset -2px -2px rgba(0, 0, 0, 0.45);
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background: rgb(81, 6, 201);
+}
+
+.btn:active {
+  transform: translateY(3px);
+}
+
+@media (max-width: 768px) {
+  .judul-card h1 {
+    font-size: 1.2rem;
+  }
+
+  .penjelasan-card {
+    padding: 20px;
+  }
+
+  body {
+    padding: 20px 10px;
+  }
+}
