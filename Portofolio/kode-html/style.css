@@ -10,7 +10,7 @@ html {
 
 body {
   font-family: "Silkscreen", sans-serif;
-  background-image: url("/Portofolio/assets/img/overworld.png");
+  background-image: url("/assets/img/overworld.png");
   background-repeat: repeat;
   background-attachment: fixed;
   line-height: 1.8;
@@ -101,8 +101,9 @@ body {
   background: #7cfc00;
 }
 
-.btn,
-.btn-kembali {
+.btn-css,
+.btn-beranda,
+.btn-prompt {
   display: inline-block;
   background: grey;
   color: #fff;
@@ -115,19 +116,19 @@ body {
   transition: 0.2s;
 }
 
-.btn:hover {
-  background: rgb(81, 6, 201);
+.btn-prompt:hover {
+  background: linear-gradient(purple, black);
 }
 
-.btn:active {
-  transform: translateY(3px);
+.btn-css:hover {
+  background: linear-gradient(rgb(69, 3, 156), rgb(131, 6, 247));
 }
 
-.btn-kembali:hover {
-  background: rgb(15, 189, 9);
+.btn-beranda:hover {
+  background: linear-gradient(rgb(13, 71, 1), rgb(2, 248, 23));
 }
 
-.btn-kembali:active {
+.btn-beranda:active {
   transform: translateY(3px);
 }
 
