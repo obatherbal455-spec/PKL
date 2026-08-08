@@ -10,7 +10,7 @@ html {
 
 body {
   font-family: "Silkscreen", sans-serif;
-  background-image: url("/Portofolio/assets/img/cave.png");
+  background-image: url("Portofolio/assets/img/cave.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
