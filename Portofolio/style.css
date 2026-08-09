@@ -146,14 +146,17 @@ nav a:active {
 
 .btn-html:hover {
   background: linear-gradient(rgb(83, 54, 0), rgb(206, 138, 13));
+  transform: translateY(3px);
 }
 
 .btn-css:hover {
   background: linear-gradient(rgb(190, 9, 190), purple);
+  transform: translateY(3px);
 }
 
 .btn-prompt:hover {
   background: linear-gradient(black, purple);
+  transform: translateY(3px);
 }
 
 .btn:active {
@@ -164,7 +167,7 @@ nav a:active {
   transform: translateY(3px);
 }
 
-.btn-css:hover {
+.btn-css:active {
   transform: translateY(3px);
 }
 
