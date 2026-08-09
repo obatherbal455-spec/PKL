@@ -124,7 +124,10 @@ nav a:active {
   text-align: center;
 }
 
-.btn {
+.btn,
+.btn-html,
+.btn-css,
+.btn-prompt {
   display: inline-block;
   background: #8fc740;
   color: #fff;
@@ -141,7 +144,31 @@ nav a:active {
   background: #91ff0b;
 }
 
+.btn-html:hover {
+  background: linear-gradient(rgb(83, 54, 0), rgb(206, 138, 13));
+}
+
+.btn-css:hover {
+  background: linear-gradient(rgb(190, 9, 190), purple);
+}
+
+.btn-prompt:hover {
+  background: linear-gradient(black, purple);
+}
+
 .btn:active {
+  transform: translateY(3px);
+}
+
+.btn-html:active {
+  transform: translateY(3px);
+}
+
+.btn-css:hover {
+  transform: translateY(3px);
+}
+
+.btn-prompt:active {
   transform: translateY(3px);
 }
 

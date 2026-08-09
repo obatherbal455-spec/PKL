@@ -101,44 +101,6 @@ body {
   background: #7cfc00;
 }
 
-.btn-css,
-.btn-beranda,
-.btn-prompt {
-  display: inline-block;
-  background: grey;
-  color: #fff;
-  text-decoration: none;
-  padding: 16px 30px;
-  border: 3px solid #0f0f0f;
-  box-shadow:
-    inset 2px 2px rgba(255, 255, 255, 0.35),
-    inset -2px -2px rgba(0, 0, 0, 0.45);
-  transition: 0.2s;
-}
-
-.btn-prompt:hover {
-  background: linear-gradient(purple, black);
-}
-
-.btn-css:hover {
-  background: linear-gradient(rgb(69, 3, 156), rgb(131, 6, 247));
-}
-
-.btn-beranda:hover {
-  background: linear-gradient(rgb(13, 71, 1), rgb(2, 248, 23));
-}
-
-.btn-beranda:active {
-  transform: translateY(3px);
-}
-
-.tombol {
-  display: flex;
-  justify-content: space-between;
-  gap: 15px;
-  margin-top: 30px;
-}
-
 @media (max-width: 768px) {
   .judul-card h1 {
     font-size: 1.2rem;

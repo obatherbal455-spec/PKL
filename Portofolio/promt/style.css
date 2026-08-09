@@ -10,7 +10,7 @@ html {
 
 body {
   font-family: "Silkscreen", sans-serif;
-  background-image: url(assets/img/Command-block.png);
+  background-image: url(/assets/img/Command-block.png);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -57,47 +57,4 @@ h2 {
 
 p {
   color: #f0f0f0;
-}
-
-.btn,
-.btn-css,
-.btn-beranda,
-.btn-html {
-  display: inline-block;
-  background: grey;
-  color: #fff;
-  text-decoration: none;
-  padding: 16px 30px;
-  border: 3px solid #0f0f0f;
-  box-shadow:
-    inset 2px 2px rgba(255, 255, 255, 0.35),
-    inset -2px -2px rgba(0, 0, 0, 0.45);
-  transition: 0.2s;
-}
-
-.btn-html:hover {
-  background: linear-gradient(rgb(226, 85, 4), rgb(247, 211, 6));
-}
-
-.btn-css:hover {
-  background: linear-gradient(rgb(113, 3, 156), rgb(110, 6, 247));
-}
-
-.btn:active {
-  transform: translateY(3px);
-}
-
-.btn-beranda:hover {
-  background: linear-gradient(rgb(13, 71, 1), rgb(2, 248, 23));
-}
-
-.btn-kembali:active {
-  transform: translateY(3px);
-}
-
-.tombol {
-  display: flex;
-  justify-content: space-between;
-  gap: 15px;
-  margin-top: 30px;
 }
