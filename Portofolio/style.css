@@ -17,53 +17,71 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   overflow-x: hidden;
+  line-height: 1.8;
 }
 
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-
-  background: rgba(0, 0, 0, 0.45);
-
+  background: rgba(0, 0, 0, 0.5);
   z-index: -1;
 }
+
+/* =========================
+   HEADER / NAVBAR
+========================= */
 
 header {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 8%;
-  background: rgba(35, 35, 35, 0.85);
+  padding: 18px 8%;
+  background: rgba(0, 0, 0, 0.92);
   border-bottom: 4px solid #5d5d5d;
+  box-shadow:
+    0 4px 0 rgba(0, 0, 0, 0.4),
+    0 8px 20px rgba(0, 0, 0, 0.3);
   position: sticky;
   top: 0;
   z-index: 1000;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .logo {
   font-size: 40px;
   color: white;
   text-shadow: 5px 5px #000;
+  transition: 0.2s ease;
+}
+
+.logo:hover {
+  color: #91ff0b;
+  text-shadow:
+    4px 4px #000,
+    0 0 10px #7fb238;
 }
 
 nav ul {
   display: flex;
-  gap: 15px;
+  gap: 12px;
   list-style: none;
+  flex-wrap: wrap;
 }
 
 nav a {
+  display: block;
   color: white;
   text-decoration: none;
   background: #6b6b6b;
-  padding: 12px 18px;
+  padding: 10px 16px;
   border: 2px solid #2e2e2e;
   box-shadow:
     inset 2px 2px rgba(255, 255, 255, 0.3),
     inset -2px -2px rgba(0, 0, 0, 0.5);
-  transition: 0.2s;
+  transition: 0.2s ease;
 }
 
 nav a:hover {
@@ -76,21 +94,23 @@ nav a:active {
   transform: translateY(2px);
 }
 
+/* =========================
+   HERO
+========================= */
+
 .hero {
   min-height: 90vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 60px 8%;
+  position: relative;
+  padding: 70px 8%;
   gap: 50px;
-}
-
-.hero-image img {
-  border-radius: 8px;
 }
 
 .hero-text {
   max-width: 600px;
+  animation: heroAppear 0.8s ease;
 }
 
 .hero-text h1 {
@@ -105,159 +125,367 @@ nav a:active {
   margin-bottom: 30px;
 }
 
-.text-card {
-  background: #585451;
-  border: 4px solid #938f8c;
-  box-shadow: 6px 6px #0e0e0e;
+.text-card,
+.about-card {
+  background: linear-gradient(
+    135deg,
+    rgba(90, 90, 90, 0.95),
+    rgba(45, 45, 45, 0.95)
+  );
+  border: 4px solid #8d8d8d;
+  box-shadow:
+    6px 6px #111,
+    0 0 20px rgba(0, 0, 0, 0.35);
   padding: 20px;
+  position: relative;
+  transition: 0.25s ease;
+}
+
+.text-card {
   margin-bottom: 30px;
 }
 
 .about-card {
-  background: #585451;
-  border: 4px solid #938f8c;
-  box-shadow: 6px 6px #0e0e0e;
-  padding: 20px;
-  margin-bottom: 30px;
   max-width: 900px;
-  margin: auto;
+  margin: 0 auto;
   text-align: center;
 }
+
+.about-card:hover {
+  transform: translateY(-5px);
+  border-color: #7fb238;
+  box-shadow:
+    8px 8px #111,
+    0 0 20px rgba(127, 178, 56, 0.25);
+}
+
+.hero-image {
+  animation: imageAppear 0.8s ease;
+}
+
+.hero-image img {
+  width: 320px;
+  max-width: 100%;
+  display: block;
+  image-rendering: pixelated;
+  border: 6px solid #777;
+  box-shadow:
+    8px 8px #111,
+    0 0 20px rgba(127, 178, 56, 0.35);
+  background: white;
+  transition: 0.3s ease;
+}
+
+.hero-image img:hover {
+  transform: scale(1.03);
+  border-color: #91ff0b;
+  box-shadow:
+    8px 8px #111,
+    0 0 30px rgba(127, 178, 56, 0.8);
+}
+
+/* =========================
+   BUTTON
+========================= */
 
 .btn,
 .btn-html,
 .btn-css,
 .btn-prompt {
   display: inline-block;
-  background: #8fc740;
-  color: #fff;
+  color: white;
   text-decoration: none;
-  padding: 16px 30px;
+  padding: 14px 25px;
   border: 3px solid #355b12;
   box-shadow:
     inset 2px 2px rgba(255, 255, 255, 0.35),
     inset -2px -2px rgba(0, 0, 0, 0.45);
-  transition: 0.2s;
+  transition: 0.2s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn {
+  background: #8fc740;
 }
 
 .btn:hover {
   background: #91ff0b;
+  color: black;
+  transform: translateY(-3px);
 }
 
-.btn-html:hover {
-  background: linear-gradient(rgb(83, 54, 0), rgb(206, 138, 13));
-  transform: translateY(3px);
+.btn::before,
+.btn-html::before,
+.btn-css::before,
+.btn-prompt::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  transform: skewX(-20deg);
+  transition: 0.4s ease;
 }
 
-.btn-css:hover {
-  background: linear-gradient(rgb(190, 9, 190), purple);
-  transform: translateY(3px);
+.btn:hover::before,
+.btn-html:hover::before,
+.btn-css:hover::before,
+.btn-prompt:hover::before {
+  left: 130%;
 }
 
-.btn-prompt:hover {
-  background: linear-gradient(black, purple);
-  transform: translateY(3px);
-}
-
-.btn:active {
-  transform: translateY(3px);
-}
-
-.btn-html:active {
-  transform: translateY(3px);
-}
-
-.btn-css:active {
-  transform: translateY(3px);
-}
-
+.btn:active,
+.btn-html:active,
+.btn-css:active,
 .btn-prompt:active {
   transform: translateY(3px);
 }
 
-.hero-image img {
-  width: 320px;
-  image-rendering: pixelated;
-  border: 6px solid #444;
-  box-shadow: 0 0 6px #000;
-  background: #fff;
+.tombol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.08);
 }
 
+.btn-html {
+  background: #a56a00;
+}
+
+.btn-html:hover {
+  background: linear-gradient(#ff9800, #b45f00);
+  transform: translateY(-3px);
+}
+
+.btn-css {
+  background: #6b00a8;
+}
+
+.btn-css:hover {
+  background: linear-gradient(#e100ff, #6a00a8);
+  transform: translateY(-3px);
+}
+
+.btn-prompt {
+  background: #252525;
+}
+
+.btn-prompt:hover {
+  background: linear-gradient(#000, #7b00ff);
+  transform: translateY(-3px);
+}
+
+/* =========================
+   SECTION
+========================= */
+
 section {
-  padding: 80px 8%;
+  position: relative;
+  padding: 90px 8%;
   max-width: 1400px;
   margin: auto;
+  scroll-margin-top: 150px;
+}
+
+section::before {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 35px;
+  bottom: 35px;
+  background: rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  pointer-events: none;
+  z-index: -1;
 }
 
 section h2 {
+  position: relative;
+  z-index: 1;
+  display: table;
   text-align: center;
-  margin-bottom: 40px;
-  text-shadow: 3px 3px #000;
+  margin: 0 auto 50px;
+  padding-bottom: 12px;
+  font-size: 30px;
+  letter-spacing: 2px;
+  text-shadow:
+    3px 3px #000,
+    0 0 8px rgba(255, 255, 255, 0.2);
 }
+
+section h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 140px;
+  height: 5px;
+  transform: translateX(-50%);
+  background: #7fb238;
+  box-shadow:
+    0 0 5px #7fb238,
+    0 0 15px rgba(127, 178, 56, 0.5);
+}
+
+/* =========================
+   SKILLS
+========================= */
 
 .inventory {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 20px;
+  position: relative;
 }
 
 .slot {
-  background: #7b7b7b;
-  border: 4px solid #3a3a3a;
-  padding: 20px;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(145deg, #858585, #626262);
+  border: 4px solid #3b3b3b;
+  padding: 25px;
   text-align: center;
-  transition: 0.2s;
-  box-shadow: 4px 4px #222;
+  transition: 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    inset 3px 3px rgba(255, 255, 255, 0.25),
+    inset -4px -4px rgba(0, 0, 0, 0.45),
+    5px 5px #111;
+}
+
+.slot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid transparent;
+  transition: 0.2s ease;
+  pointer-events: none;
+}
+
+.slot:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow:
+    inset 3px 3px rgba(255, 255, 255, 0.3),
+    inset -4px -4px rgba(0, 0, 0, 0.5),
+    7px 7px #111,
+    0 0 20px rgba(127, 178, 56, 0.4);
+}
+
+.slot:hover::before {
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .slot.html:hover {
-  transform: scale(1.08);
-  background: #ff7300;
-}
-
-.slot.html i {
-  font-size: 45px;
-  margin-bottom: 15px;
-  color: white;
+  background: linear-gradient(145deg, #ff7b00, #a74700);
 }
 
 .slot.css:hover {
-  transform: scale(1.08);
-  background: #4400ff;
+  background: linear-gradient(145deg, #5966ff, #2516a8);
 }
 
-.slot.css i {
-  font-size: 45px;
+.slot i {
+  font-size: 50px;
   margin-bottom: 15px;
   color: white;
+  filter: drop-shadow(3px 3px #222);
+  transition: 0.2s ease;
 }
+
+.slot:hover i {
+  transform: scale(1.15);
+}
+
+/* =========================
+   PROJECT
+========================= */
 
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  gap: 25px;
 }
 
 .project-link {
-  text-decoration: none;
-  color: inherit;
   display: block;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
 }
 
 .project-card {
-  background: #7b7b7b;
+  position: relative;
+  min-height: 190px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(
+    145deg,
+    rgba(120, 120, 120, 0.95),
+    rgba(60, 60, 60, 0.95)
+  );
   border: 4px solid #3a3a3a;
-  padding: 20px;
+  padding: 25px;
   text-align: center;
-  transition: 0.2s;
-  box-shadow: 4px 4px #222;
+  box-shadow:
+    inset 3px 3px rgba(255, 255, 255, 0.2),
+    inset -4px -4px rgba(0, 0, 0, 0.45),
+    6px 6px #111;
+  transition: 0.25s ease;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .project-card:hover {
-  transform: scale(1.05);
-  background: linear-gradient(45deg, #1d1d1c, #f4f5f7);
+  transform: translateY(-7px);
+  border-color: #7fb238;
+  box-shadow:
+    inset 3px 3px rgba(255, 255, 255, 0.25),
+    inset -4px -4px rgba(0, 0, 0, 0.5),
+    8px 8px #111,
+    0 0 20px rgba(127, 178, 56, 0.35);
 }
+
+.project-card::before {
+  content: "PROJECT";
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-size: 8px;
+  opacity: 0.35;
+}
+
+.project-card h3 {
+  width: 100%;
+  font-size: 17px;
+  margin-bottom: 12px;
+  transition: 0.2s ease;
+}
+
+.project-card:hover h3 {
+  color: #91ff0b;
+  text-shadow: 0 0 8px rgba(145, 255, 11, 0.5);
+}
+
+.project-card p {
+  font-size: 12px;
+}
+
+/* =========================
+   HOBBY
+========================= */
 
 .hobby-grid {
   display: grid;
@@ -266,49 +494,71 @@ section h2 {
 }
 
 .hobby-card {
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background: #7b7b7b;
   border: 4px solid #3a3a3a;
-  padding: 20px;
+  padding: 25px 15px;
   text-align: center;
-  transition: 0.2s;
-  box-shadow: 4px 4px #222;
+  transition: 0.2s ease;
+  box-shadow:
+    inset 3px 3px rgba(255, 255, 255, 0.2),
+    inset -4px -4px rgba(0, 0, 0, 0.45),
+    5px 5px #111;
+  position: relative;
+  overflow: hidden;
+}
+
+.hobby-card:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    inset 3px 3px rgba(255, 255, 255, 0.25),
+    inset -4px -4px rgba(0, 0, 0, 0.5),
+    7px 7px #111;
+}
+
+.hobby-card i {
+  font-size: 40px;
+  margin-bottom: 15px;
+  filter: drop-shadow(3px 3px #222);
+  transition: 0.2s ease;
+}
+
+.hobby-card:hover i {
+  transform: scale(1.15);
 }
 
 .hobby-card-game:hover {
-  transform: scale(1.08);
   background: linear-gradient(45deg, #001aff, #ea01ff);
 }
 
 .hobby-card-coding:hover {
-  transform: scale(1.08);
   background: linear-gradient(45deg, #ff7300, #2238ff);
 }
 
 .hobby-card-music:hover {
-  transform: scale(1.08);
   background: linear-gradient(45deg, #4400ff, #00aaff);
 }
 
 .hobby-card-fish:hover {
-  transform: scale(1.08);
   background: linear-gradient(45deg, #00aaff, #0066cc);
 }
 
 .hobby-card-film:hover {
-  transform: scale(1.08);
   background: linear-gradient(45deg, #111111, #fcfaf8);
+  color: black;
 }
 
 .hobby-card-tidur:hover {
-  transform: scale(1.08);
   background: linear-gradient(45deg, #b67f7f, #111111);
 }
 
-.klik {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
+/* =========================
+   CONTACT
+========================= */
 
 .kontak-links {
   display: flex;
@@ -328,52 +578,178 @@ section h2 {
   padding: 12px 18px;
   border: 2px solid #2e2e2e;
   box-shadow:
+    inset 2px 2px rgba(255, 255, 255, 0.25),
+    inset -3px -3px rgba(0, 0, 0, 0.5),
+    4px 4px #111;
+  transition: 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.kontak-links a:hover {
+  transform: translateY(-5px);
+  box-shadow:
     inset 2px 2px rgba(255, 255, 255, 0.3),
-    inset -2px -2px rgba(0, 0, 0, 0.5);
-  transition: 0.2s;
+    inset -3px -3px rgba(0, 0, 0, 0.5),
+    6px 6px #111,
+    0 0 15px rgba(255, 255, 255, 0.15);
+}
+
+.kontak-links i {
+  transition: 0.2s ease;
+}
+
+.kontak-links a:hover i {
+  transform: scale(1.15);
 }
 
 .whatsapp:hover {
-  background: #7fb238;
+  background: #25d366;
   color: black;
-  transform: translateY(-2px);
 }
 
 .github:hover {
   background: #000;
   color: white;
-  transform: translateY(-2px);
 }
 
 .facebook:hover {
   background: #3b5998;
   color: white;
-  transform: translateY(-2px);
 }
 
 .email:hover {
   background: #d44638;
   color: white;
-  transform: translateY(-2px);
 }
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: 30px;
+  background: rgba(10, 10, 10, 0.92);
+  border-top: 4px solid #5d5d5d;
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.4);
+}
+
+footer p {
+  font-size: 11px;
+  opacity: 0.7;
+  transition: 0.2s ease;
+}
+
+footer p:hover {
+  opacity: 1;
+  color: #91ff0b;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes heroAppear {
+  from {
+    opacity: 0;
+    transform: translateX(-25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes imageAppear {
+  from {
+    opacity: 0;
+    transform: translateX(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 768px) {
   header {
     flex-direction: column;
     gap: 20px;
+    padding: 20px 5%;
+  }
+
+  .hero-text,
+  .hero-image {
+    animation: none;
+  }
+
+  .logo {
+    font-size: 30px;
   }
 
   nav ul {
-    flex-wrap: wrap;
     justify-content: center;
+    gap: 8px;
+  }
+
+  nav a {
+    padding: 8px 10px;
+    font-size: 11px;
   }
 
   .hero {
     flex-direction: column;
     text-align: center;
+    padding: 60px 5%;
   }
 
   .hero-image img {
     width: 250px;
+    max-width: 100%;
+  }
+
+  section {
+    padding: 70px 5%;
+    scroll-margin-top: 150px;
+  }
+
+  section::before {
+    left: 3%;
+    right: 3%;
+  }
+
+  section h2 {
+    font-size: 24px;
+  }
+
+  .slot,
+  .project-card,
+  .hobby-card {
+    min-height: 140px;
+  }
+
+  .project-card:hover,
+  .hobby-card:hover,
+  .slot:hover {
+    transform: translateY(-4px);
+  }
+
+  .tombol {
+    flex-direction: column;
+  }
+
+  .btn-html,
+  .btn-css,
+  .btn-prompt {
+    width: 200px;
+    text-align: center;
   }
 }
